@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  vote-goverment:
+    build: .
+    image: vote-goverment
+    container_name: vote-goverment
+    volumes:
+      - .:/app
+    networks:
+        - vote-goverment-network
+
+networks:
+  vote-goverment-network:
+    driver: bridge
+    name: vote-goverment-network

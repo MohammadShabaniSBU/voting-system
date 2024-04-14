@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  vote-voter-1:
+    build: .
+    image: vote-voter
+    container_name: vote-voter-1
+    environment:
+      - LOCAL_URL=http://vote-local-1
+    volumes:
+      - .:/app
+    networks:
+        - vote-local-1-network
+
+networks:
+  vote-local-1-network:
+    external: true

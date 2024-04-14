@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  vote-local-1:
+    build: .
+    image: vote-local
+    container_name: vote-local-1
+    environment:
+      - MY_URL=http://vote-local-1
+      - GOVERMENT_URL=http://vote-goverment
+    volumes:
+      - .:/app
+    networks:
+        - vote-goverment-network
+        - vote-local-1-network
+
+networks:
+  vote-goverment-network:
+    external: true
+
+  vote-local-1-network:
+    driver: bridge
+    name: vote-local-1-network
